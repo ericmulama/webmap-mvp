@@ -77,8 +77,7 @@ Copy code
 npm install
 
 Create a .env file:
-
-Copy code
+Insert the below code and replace the password with the password of your postgresql server.
 PGHOST=localhost
 PGUSER=postgres
 PGPASSWORD=yourpassword
@@ -95,13 +94,12 @@ geom geometry column (EPSG:4326)
 Required attribute columns
 
 Create spatial indexes:
-
-Copy code
-CREATE INDEX idx_health_geom ON healthcare USING GIST (geom);
-Repeat for all tables.
+Add the below code for each spatial table to create spatial index.
+eg. CREATE INDEX idx_health_geom ON healthcare USING GIST (geom);
+NB: Repeat for all tables.
 
 ▶️ Running the Server
-Start the backend:
+To start the backend:
 
 Copy code
 node server.js
@@ -111,28 +109,9 @@ Server listening on http://localhost:3000
 Connected to Postgres
 
 Visit the map in your browser:
-
+follow the path below to visit your webmap in the browser.
 http://localhost:3000
 
-🌍 API Endpoints
-Full GeoJSON
-
-Copy code
-GET /api/county
-GET /api/healthcare
-GET /api/schools
-GET /api/universities
-GET /api/power
-
-BBOX Endpoints
-For fast point loading:
-GET /api/healthcare/bbox?xmin=&ymin=&xmax=&ymax=
-GET /api/schools/bbox?xmin=&ymin=&xmax=&ymax=
-GET /api/universities/bbox?xmin=&ymin=&xmax=&ymax=
-GET /api/power/bbox?xmin=&ymin=&xmax=&ymax=
-
-Example:
-/api/healthcare/bbox?xmin=36.5&ymin=-1.5&xmax=37&ymax=-1.1
 ⚙️ How It Works (Technical Overview)
 Frontend
 Loads counties once (full GeoJSON)
