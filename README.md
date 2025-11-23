@@ -71,7 +71,7 @@ Before running the project, ensure the following are installed:
 Clone the repository:
 
 ```bash
-git clone https://github.com/<your-username>/kenya-gis-webmap-mvp.git
+git clone https://github.com/ericmulama/kenya-gis-webmap-mvp.git
 cd kenya-gis-webmap-mvp
 Install dependencies:
 
