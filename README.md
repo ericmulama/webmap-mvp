@@ -69,18 +69,15 @@ Before running the project, ensure the following are installed:
 ## 📦 Installation
 
 Clone the repository:
-
-```bash
 git clone https://github.com/ericmulama/kenya-gis-webmap-mvp.git
 cd kenya-gis-webmap-mvp
-Install dependencies:
 
-bash
+Install dependencies:
 Copy code
 npm install
+
 Create a .env file:
 
-ini
 Copy code
 PGHOST=localhost
 PGUSER=postgres
@@ -88,6 +85,7 @@ PGPASSWORD=yourpassword
 PGDATABASE=gisdata
 PGPORT=5432
 PORT=3000
+
 Place your dataset tables in PostgreSQL with:
 
 id (optional)
@@ -98,7 +96,6 @@ Required attribute columns
 
 Create spatial indexes:
 
-sql
 Copy code
 CREATE INDEX idx_health_geom ON healthcare USING GIST (geom);
 Repeat for all tables.
@@ -106,42 +103,35 @@ Repeat for all tables.
 ▶️ Running the Server
 Start the backend:
 
-bash
 Copy code
 node server.js
 If successful, you’ll see:
 
-nginx
-Copy code
 Server listening on http://localhost:3000
 Connected to Postgres
+
 Visit the map in your browser:
 
-arduino
-Copy code
 http://localhost:3000
+
 🌍 API Endpoints
 Full GeoJSON
-bash
+
 Copy code
 GET /api/county
 GET /api/healthcare
 GET /api/schools
 GET /api/universities
 GET /api/power
+
 BBOX Endpoints
 For fast point loading:
-
-bash
-Copy code
 GET /api/healthcare/bbox?xmin=&ymin=&xmax=&ymax=
 GET /api/schools/bbox?xmin=&ymin=&xmax=&ymax=
 GET /api/universities/bbox?xmin=&ymin=&xmax=&ymax=
 GET /api/power/bbox?xmin=&ymin=&xmax=&ymax=
-Example:
 
-bash
-Copy code
+Example:
 /api/healthcare/bbox?xmin=36.5&ymin=-1.5&xmax=37&ymax=-1.1
 ⚙️ How It Works (Technical Overview)
 Frontend
